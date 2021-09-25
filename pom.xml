@@ -7,10 +7,56 @@
     <groupId>org.example</groupId>
     <artifactId>com.datadrivenBase</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-api</artifactId>
+        <version>3.141.59</version>
+        <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.4.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.0.0-rc-1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openqa.selenium.core</groupId>
+            <artifactId>selenium-core</artifactId>
+            <version>1.0-20080914.225453</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <properties>
         <maven.compiler.source>14</maven.compiler.source>
         <maven.compiler.target>14</maven.compiler.target>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+                <!--<configuration>
+                    <testFailureIgnore> false </testFailureIgnore>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/runner/testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>-->
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
