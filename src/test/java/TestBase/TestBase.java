@@ -1,5 +1,6 @@
 package TestBase;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -15,24 +16,36 @@ import java.util.concurrent.TimeUnit;
 
 public class TestBase {
 
-    //WebDriver, Properties,Logs,ExtentReports,DB ,Excel,Mail
+//    WebDriver, DONE
+//     Properties, DONE
+//     Logs : Log4J jar, .log file(Application.log & Selenium.log), Log4.properties, Logger
+//     ExtentReports,
+//     DB ,
+//     Excel,
+//     Mail,
+//     ReportNG,DONE
+//     Jenkins
 
     public static WebDriver driver;
     public static Properties config = new Properties();
     public static Properties OR = new Properties();
     public static FileInputStream fis;
+    public static Logger log= Logger.getLogger("devpinoyLogger");
+
     //before suite
     @BeforeSuite
     public void setup() throws IOException {
         if (driver == null) {           // Read Config Property
             try (FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "//src//test//resources//Config.properties")) {
                 config.load(fis);
+                log.debug("Config file is loaded");
             }
             //  Read the OR  property file
             try {
                 fis = new FileInputStream(System.getProperty("user.dir") + "//src//test//resources//OR.properties");
                 {
                     OR.load(fis);
+                    log.debug("OR file is loaded");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -45,6 +58,7 @@ public class TestBase {
         } else if (config.getProperty("browser").equals("chrome")) {
             System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\src\\chromedriver.exe");
             driver = new ChromeDriver();
+            log.debug("Chrome is launched");
         } else if (config.getProperty("browser").equals("IE")) {
             System.setProperty("webdriver.IE.driver", System.getProperty("user.dir") + "\\src\\test\\src\\IEDriverServer.exe");
 
@@ -63,5 +77,6 @@ public class TestBase {
         if (driver != null) {
             driver.quit();
         }
+        log.debug("Test Execution is completed");
     }
 }
