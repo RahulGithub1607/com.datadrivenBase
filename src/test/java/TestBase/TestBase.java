@@ -1,6 +1,8 @@
 package TestBase;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -20,6 +22,7 @@ public class TestBase {
 //     Properties, DONE
 //     Logs : Log4J jar, .log file(Application.log & Selenium.log), Log4.properties, Logger
 //     ExtentReports,
+//     isElementPresent
 //     DB ,
 //     Excel,
 //     Mail,
@@ -70,6 +73,19 @@ public class TestBase {
         driver.manage().timeouts().implicitlyWait(Long.parseLong(config.getProperty("implicit.wait")), TimeUnit.SECONDS);
 
 
+    }
+    // Check isElementPresent
+    public boolean isElementPresent(By by)
+    {
+      try
+      {
+          driver.findElement(by);
+          return true;
+      }
+      catch(NoSuchElementException e)
+      {
+       return  false;
+      }
     }
 
     @AfterSuite
