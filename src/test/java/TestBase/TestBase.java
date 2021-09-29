@@ -1,5 +1,6 @@
 package TestBase;
 
+import Utilities.ExcelReader;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -22,7 +23,7 @@ public class TestBase {
 //     Properties, DONE
 //     Logs : Log4J jar, .log file(Application.log & Selenium.log), Log4.properties, Logger
 //     ExtentReports,
-//     isElementPresent
+//     isElementPresent Done
 //     DB ,
 //     Excel,
 //     Mail,
@@ -34,6 +35,8 @@ public class TestBase {
     public static Properties OR = new Properties();
     public static FileInputStream fis;
     public static Logger log= Logger.getLogger("devpinoyLogger");
+    public static ExcelReader excel =new ExcelReader(System.getProperty("user.dir") + "//src//test//resources//excel//TestData.xlsx");
+
 
     //before suite
     @BeforeSuite

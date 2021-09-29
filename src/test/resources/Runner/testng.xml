@@ -10,4 +10,15 @@
         </class>
         </classes>
     </test>
+
+    <test  name="AddLoginDetails Test">
+        <classes>
+            <class name="TestCases.LoginTest"> </class>
+            <class name="TestCases.AddLoginDetails">
+                <methods>
+<!--                    <include name="loginAsUser"/>-->
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>
